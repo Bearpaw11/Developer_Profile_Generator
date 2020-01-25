@@ -55,6 +55,10 @@ function generateHTML(data) {
          background-color: ${colors[data.color].wrapperBackground};
          padding-top: 100px;
          }
+         .wrapper2 {
+          background-color: #5F64D3;
+          padding-top: 100px
+          }
          body {
          background-color: white;
          -webkit-print-color-adjust: exact !important;
@@ -180,7 +184,10 @@ function generateHTML(data) {
          <h1>Hi!</h1>
          <h1>My name is ${data.name}</h1>
          <h3>Currently @ ${data.company}</h3>
-         <h3>${data.location}</h3>
+         <h3 class="links-nav nav-link ">Location: ${data.location}</h3> 
+         <a href="${data.html_url}"target="_blank>Git Hub</a> 
+         <a href="${data.blog}"target="_blank>&nbsp;&nbsp;&nbsp;&nbsp;Blog </a>
+         </div>
          </div>
          <div class="container">
          <h4>${data.bio}</h4>
@@ -205,7 +212,8 @@ function generateHTML(data) {
          </div>
          </div>
          </div>
-        
+        <div class="wrapper2">
+        </div>
         
 
       
