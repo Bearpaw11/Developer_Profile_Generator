@@ -4,8 +4,8 @@ var axios = require("axios")
 var generateHTML = require("./generateHTML")
 const client_id = "Iv1.33f307defd13a715"
 const client_secret = "ef0358ffa6e546f5238758f7e59688001624da77"
-const convertFactory = require('electron-html-to');
-
+const pdf = require('html-pdf');
+const googleKey = "AIzaSyD3sr24Y6WTkxGLl4RB7QlZsWoocUb5hfQ"
 
 
 inquirer
@@ -45,29 +45,22 @@ inquirer
                     console.log(err)
                 } else {
                     console.log("success")
+                    var html1 = fs.readFileSync('test.html', 'utf8');
+                    var options = { format: 'Letter' };
+                    console.log(html1)
+                    pdf.create(html1, options).toFile('./github.pdf', function(err, res) {
+                      if (err) return console.log(err);
+                      console.log(res); // { filename: '/app/businesscard.pdf' }
+                    });
                     
                 }
             })
-            console.log(html)
+            // console.log(html)
 
-            var conversion = convertFactory({
-                converterPath: convertFactory.converters.PDF
-              });
-               
-              conversion({ html: '<h1>Hello World</h1>' }, function(err, result) {
-                if (err) {
-                  return console.error(err);
-                }
-               
-                console.log(result.numberOfPages);
-                console.log(result.logs);
-                result.stream.pipe(fs.createWriteStream('anywhere.pdf'));
-                conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details
-              });
         
             
 
-        });
+         });
      
 
 
