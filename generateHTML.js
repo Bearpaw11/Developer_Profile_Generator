@@ -48,12 +48,13 @@ function generateHTML(data) {
          padding: 0;
          margin: 0;
          }
-         html, body, .wrapper {
+         html, body {
          height: 100%;
          }
          .wrapper {
          background-color: ${colors[data.color].wrapperBackground};
          padding-top: 100px;
+         padding-bottom: 100px;
          }
          .wrapper2 {
           background-color: ${colors[data.color].wrapperBackground};
@@ -184,9 +185,11 @@ function generateHTML(data) {
          <h1>Hi!</h1>
          <h1>My name is ${data.name}</h1>
          <h3>Currently @ ${data.company}</h3>
-         <h3 class="links-nav nav-link ">Location: ${data.location}</h3> 
-         <a href="${data.html_url}"target="_blank">Git Hub</a> 
-         <a href="${data.blog}"target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;Blog </a>
+         <div class="links-nav">
+         <a class="nav-link" href="https://www.google.com/maps/place/${data.location}" target="_blank">Location: ${data.location}</a> 
+         <a class="nav-link" href="${data.html_url}"target="_blank">Git Hub</a> 
+         <a class="nav-link" href="${data.blog}" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;Blog </a>
+         </div>
          </div>
          </div>
          <div class="container">
@@ -204,7 +207,7 @@ function generateHTML(data) {
          <div class="row">
          <div class="col card">
             <h4>GitHub Stars</h4>
-            <h5>${data.public_repos}</h5>
+            <h5>${data.starTotal}</h5>
          </div>
          <div class="col card">
             <h4>Following</h4>
